@@ -1,0 +1,4 @@
+node_modules/
+client/build/
+config/config.env
+.env

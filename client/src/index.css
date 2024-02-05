@@ -1,0 +1,101 @@
+main {
+  min-height: 80vh;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+/* button */
+
+.MuiButton-containedPrimary {
+  color: #fff;
+  background-color: #2b2b52 !important;
+  font-weight: bold !important;
+}
+.MuiButton-containedPrimary:hover {
+  color: #fff;
+  background-color: #303f9f !important;
+  font-weight: bold !important;
+}
+.MuiButton-contained.Mui-disabled {
+  color: white !important;
+}
+.MuiButton-label img {
+  width: 100px;
+}
+/* ConfrimAlert */
+
+.custom-ui {
+  background-color: #2b2b52;
+  text-align: center;
+  width: 500px;
+  padding: 40px;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.23);
+  color: #fff;
+}
+
+.custom-ui button {
+  width: 160px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin: 10px;
+  cursor: pointer;
+  background: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+.custom-ui-alert {
+  text-align: center;
+  width: 500px;
+  padding: 40px;
+  background-color: #fff;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.23);
+  color: black;
+}
+
+.custom-ui-alert img {
+  width: 100px;
+}
+
+.custom-ui-alert .text {
+  color: #2b2b52;
+}
+/* carousel */
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: flex;
+}
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+
+.carousel-caption h2 {
+  color: #fff;
+}
+
+.carousel img {
+  height: 300px;
+  padding: 30px;
+  margin: 40px;
+  border-radius: 50%;
+}
+.carousel a {
+  margin: 0 auto;
+}

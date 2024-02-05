@@ -1,0 +1,38 @@
+{
+  "name": "TelecomTechStore",
+  "version": "1.0.0",
+  "description": "store for tunisie telecome e-commerce ",
+  "main": "app.js",
+  "author": "Riahi Semah",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watchAll",
+    "start": "NODE_ENV=production node app.js",
+    "start:dev": "nodemon app",
+    "heroku-postbuild": "YARN_PRODUCTION=false cd client && yarn install"
+  },
+  "dependencies": {
+    "@elasticemail/elasticemail-client": "^4.0.23",
+    "@sendgrid/mail": "^7.3.0",
+    "bcrypt": "^5.0.0",
+    "cloudinary": "^1.23.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.6",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.9.7",
+    "nodemon": "^3.0.2",
+    "sib-api-v3-sdk": "^8.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-typescript": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
+}
