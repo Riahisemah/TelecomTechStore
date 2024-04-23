@@ -8,10 +8,8 @@ import { userList, userDelete } from '../Actions/userAction';
 import * as userConstants from '../Constants/userConstants';
 import { Button as MaterialButton } from '@material-ui/core/';
 import TableLoader from '../Components/Loader/TableLoader';
-import { createPdfData } from '../services/user';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import Print from '../Components/Print/Print';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -25,9 +23,6 @@ const UserList = () => {
 
   const userDeleteDetails = useSelector((state) => state.userDeleteDetails);
   const { success: deleteSuccess, error: deleteFail } = userDeleteDetails;
-
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
 
   useEffect(() => {
     dispatch(userList(initialLoading));
@@ -69,24 +64,6 @@ const UserList = () => {
     });
   };
 
-  const printAs = (value) => {
-    const downloadAs = value;
-
-    switch (downloadAs) {
-      case 'pdf':
-        var docDefinition = createPdfData(userInfo, users);
-
-        pdfMake.createPdf(docDefinition).download('users-list.pdf');
-
-        break;
-      case 'excel':
-        break;
-
-      default:
-        break;
-    }
-  };
-
   return (
     <>
       {deleteSuccess && (
@@ -98,11 +75,6 @@ const UserList = () => {
       <div className="clearfix">
         <span className="float-left">
           <h1>Users ({count})</h1>
-        </span>
-
-        <span className="float-right">
-          {' '}
-          <Print printAs={printAs} />
         </span>
       </div>
 
@@ -116,9 +88,9 @@ const UserList = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>NAME</th>
+                <th>NOME</th>
                 <th>EMAIL</th>
-                <th>VERIFIED</th>
+                <th>VÉRIFIÉ</th>
                 <th>ROLE</th>
                 <th>DATE</th>
                 <th>ACTION</th>

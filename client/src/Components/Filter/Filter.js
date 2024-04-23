@@ -4,12 +4,8 @@ import { Checkbox, FormControlLabel, TextField } from '@material-ui/core';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCatigorys } from 'services/catigory';
+
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -29,21 +25,15 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
-
-  const catigoryList = useSelector((state) => state.catigoryList);
-
-  const { catigorys, success } = catigoryList;
-  console.log(catigorys);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (success && initialLoading) {
+    if (initialLoading) {
       setInitialLoading(false);
     } else {
-      fetchCatigorys();
     }
     // eslint-disable-next-line
-  }, [dispatch, filters, success]);
+  }, [dispatch, filters]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -58,8 +48,18 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
 
   return (
     <div>
-      <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-        Filter
+      <Button
+        aria-describedby={id}
+        variant="contained"
+        style={{
+          background: 'rgb(32,113,31)',
+          // eslint-disable-next-line no-dupe-keys
+          background:
+            'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+        }}
+        onClick={handleClick}
+      >
+        Filtre
       </Button>
       <Popover
         id={id}
@@ -76,7 +76,7 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
         }}
       >
         <Typography className={classes.typography}>
-          <h6>Sort By</h6>
+          <h6>Trier Par</h6>
           <FormControlLabel
             control={
               <Checkbox
@@ -87,7 +87,7 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
                 onChange={(e) => handleSort(e.target.value)}
               />
             }
-            label="Name"
+            label="Nom"
           />
           <FormControlLabel
             control={
@@ -99,7 +99,7 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
                 onChange={(e) => handleSort(e.target.value)}
               />
             }
-            label="Price"
+            label="Prix"
           />
           <FormControlLabel
             control={
@@ -111,28 +111,8 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
                 onChange={(e) => handleSort(e.target.value)}
               />
             }
-            label="Rating"
+            label="Evaluation"
           />
-
-          <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              onChange={(e) => handleFilters('category', e.target.value)}
-              label="Category"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {catigorys &&
-                catigorys.map((catigory) => (
-                  <MenuItem key={catigory._id} value={catigory.categoryName}>
-                    {catigory.categoryName}
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
           <div className="mt-4 mb-4">
             <TextField
               autoComplete="priceRange"
@@ -141,8 +121,8 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
               type="number"
               required
               id="priceRange"
-              placeholder="Price Range"
-              label="Price Range"
+              placeholder="Échelle des prix"
+              label="Échelle des prix"
               onChange={(e) => setPriceRange(e.target.value)}
             />{' '}
             <FormControlLabel
@@ -155,7 +135,7 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
                   onChange={(e) => setLtORgt(e.target.value)}
                 />
               }
-              label="Less than"
+              label="Moins que"
             />
             <FormControlLabel
               control={
@@ -167,12 +147,21 @@ function Filtetr({ sort, handleSort, setPriceRange, setLtORgt, ltORgt, handlePri
                   onChange={(e) => setLtORgt(e.target.value)}
                 />
               }
-              label="Greater Or equal to"
+              label="Supérieur ou égal à"
             />
           </div>
           <div>
-            <Button variant="contained" color="primary" onClick={handlePriceRange}>
-              Done
+            <Button
+              variant="contained"
+              style={{
+                background: 'rgb(32,113,31)',
+                // eslint-disable-next-line no-dupe-keys
+                background:
+                  'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+              }}
+              onClick={handlePriceRange}
+            >
+              Filtre
             </Button>
           </div>
         </Typography>

@@ -98,47 +98,47 @@ const Order = ({ match }) => {
     <>
       {order ? (
         <>
-          <h1>Order {order._id}</h1>
+          <h1>Commande {order._id}</h1>
           <Row>
             <Col md={8}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h2>Shipping</h2>
+                  <h2>livraison</h2>
                   <p>
-                    <strong>Name: </strong> {order.userId.name}
+                    <strong>Nom: </strong> {order.userId.name}
                   </p>
                   <p>
                     <strong>Email: </strong> <a href={`mailto:${order.userId.email}`}>{order.userId.email}</a>
                   </p>
                   <p>
-                    <strong>Address:</strong> {order.shipping.address},{order.shipping.city} {order.shipping.postalCode}
-                    , {order.shipping.country}
+                    <strong>Adress:</strong> {order.shipping.address},{order.shipping.city} {order.shipping.postalCode},{' '}
+                    {order.shipping.country}
                   </p>
                   {order.isDelivered ? (
-                    <Message variant="success">Delivered on {order.deliveredAt}</Message>
+                    <Message variant="success">Délivré le {order.deliveredAt}</Message>
                   ) : (
-                    <Message variant="danger">Not Delivered</Message>
+                    <Message variant="danger">Non Délivré</Message>
                   )}
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <h2>Payment Method</h2>
+                  <h2>Mode de paiement</h2>
                   <p>
-                    <strong>Method: </strong>
+                    <strong>Mode: </strong>
                     {order.payment ? order.payment.paymentMethod : ''}
                   </p>
                   {order.isPaid ? (
-                    <Message variant="success">Paid on {order.paidAt}</Message>
+                    <Message variant="success">Payé le {order.paidAt}</Message>
                   ) : (
-                    <Message variant="danger">Not Paid</Message>
+                    <Message variant="danger">Non Payé</Message>
                   )}
                 </ListGroup.Item>
 
                 {order.orderItems ? (
                   <ListGroup.Item>
-                    <h2>Order Items</h2>
+                    <h2>Items commandés</h2>
                     {!order.orderItems.length ? (
-                      <Message>Order is empty</Message>
+                      <Message>La commande est vide</Message>
                     ) : (
                       <ListGroup variant="flush">
                         {order.orderItems.map((item, index) => (
@@ -176,7 +176,7 @@ const Order = ({ match }) => {
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
-                    <h2>Order Summary</h2>
+                    <h2>Récapitulatif de la commande</h2>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
@@ -189,7 +189,7 @@ const Order = ({ match }) => {
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Shipping</Col>
+                      <Col>livraison</Col>
                       <Col>
                         DT : <span> </span>
                         {order.shippingPrice}
@@ -224,12 +224,23 @@ const Order = ({ match }) => {
                       )}
                     </ListGroup.Item>
                   )}
-
+                  ////////// Edit just for test order.isPaid ////////////////////
                   {loadingDeliver && <Loader />}
-                  {userInfo && userInfo.role === 'admin' && order.isPaid && !order.isDelivered && (
+                  {userInfo && userInfo.role === 'admin' && !order.isPaid && !order.isDelivered && (
                     <ListGroup.Item>
-                      <Button type="submit" variant="contained" color="primary" fullWidth onClick={deliverHandler}>
-                        Mark As Delivered
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        style={{
+                          background: 'rgb(32,113,31)',
+                          // eslint-disable-next-line no-dupe-keys
+                          background:
+                            'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                        }}
+                        fullWidth
+                        onClick={deliverHandler}
+                      >
+                        Marquer comme livré{' '}
                       </Button>
                     </ListGroup.Item>
                   )}

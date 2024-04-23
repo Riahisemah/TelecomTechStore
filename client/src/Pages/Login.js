@@ -43,20 +43,20 @@ const Login = ({ location, history }) => {
 
   return (
     <>
-      {error && <ErrorMessage header="Auth Error" message={error} reset={userConstants.RESET} />}
+      {error && <ErrorMessage header="Erreur d'authentification" message={error} reset={userConstants.RESET} />}
       <FormContainer>
-        <h1>Sign In</h1>
+        <h1>Se connecte</h1>
 
         <Form onSubmit={submitHandler}>
           <TextField
             variant="outlined"
             type="email"
             margin="normal"
-            placeholder="ex:- JohnDoe@gmail.com"
+            placeholder="ex:- Nom@gmail.com"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email adress"
             name="email"
             autoComplete="email"
             autoFocus
@@ -72,25 +72,35 @@ const Login = ({ location, history }) => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="Mote de passe"
             id="password"
             value={password}
             autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <Button type="submit" variant="contained" color="primary" fullWidth disabled={loading}>
-            {loading ? <CircularProgress color="inherit" className={classes.prgressColor} /> : <>Sign In</>}
+          <Button
+            type="submit"
+            variant="contained"
+            style={{
+              background: 'rgb(32,113,31)',
+              // eslint-disable-next-line no-dupe-keys
+              background:
+                'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+            }}
+            fullWidth
+            disabled={loading}
+          >
+            {loading ? <CircularProgress color="inherit" className={classes.prgressColor} /> : <>Se connecter</>}
           </Button>
         </Form>
 
         <Row className="py-3">
           <Col>
-            New Customer?
-            <Link to={redirectUserToRegisterRoute}>Register</Link>
+            Nouveau client? <Link to={redirectUserToRegisterRoute}>Registre</Link>
           </Col>
           <Col className="text-right">
-            <Link to={routes.FORGOT_PASSWORD}>Forgot Password</Link>
+            <Link to={routes.FORGOT_PASSWORD}>Mot de passe oublié</Link>
           </Col>
         </Row>
       </FormContainer>

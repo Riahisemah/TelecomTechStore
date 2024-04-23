@@ -24,7 +24,7 @@ const SearchBox = () => {
         type="text"
         name="seacrh"
         onChange={(e) => setSearchKey(e.target.value)}
-        placeholder="Search product..."
+        placeholder=" Rechercher un produit.."
         className="mr-sm-2"
       />
       <i className="fas fa-search"></i>

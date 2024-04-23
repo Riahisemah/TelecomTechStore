@@ -34,7 +34,7 @@ const Shipping = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 />
-      <h1>Shipping</h1>
+      <h1>livraison</h1>
       <Form onSubmit={submitHandler}>
         <TextField
           variant="outlined"
@@ -42,8 +42,8 @@ const Shipping = ({ history }) => {
           margin="normal"
           required
           fullWidth
-          id="address"
-          label="Enter Address"
+          id="adress"
+          label="Entez Adress"
           name="address"
           autoComplete="address"
           autoFocus
@@ -58,7 +58,7 @@ const Shipping = ({ history }) => {
           required
           fullWidth
           id="city"
-          label="Enter City"
+          label="Entrez la ville"
           name="city"
           autoComplete="city"
           autoFocus
@@ -73,7 +73,7 @@ const Shipping = ({ history }) => {
           required
           fullWidth
           id="postal code"
-          label="Enter postal code"
+          label="Entrez le code postal"
           name="postal code"
           autoComplete="postal code"
           autoFocus
@@ -88,7 +88,7 @@ const Shipping = ({ history }) => {
           required
           fullWidth
           id="country"
-          label="Enter country"
+          label="Entrez le pays"
           name="country"
           autoComplete="country"
           autoFocus
@@ -96,8 +96,18 @@ const Shipping = ({ history }) => {
           onChange={(e) => setCountry(e.target.value)}
         />
 
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          Continue
+        <Button
+          type="submit"
+          variant="contained"
+          style={{
+            background: 'rgb(32,113,31)',
+            // eslint-disable-next-line no-dupe-keys
+            background:
+              'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+          }}
+          fullWidth
+        >
+          Continuer
         </Button>
       </Form>
     </FormContainer>

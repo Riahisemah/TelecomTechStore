@@ -5,6 +5,7 @@ const verifyEmail = require("../utilis/verifyEmail");
 const sendEmail = require("../utilis/sendEmail");
 const cron = require("node-cron");
 const User = require("../models/User");
+
 const RegisterUser = asyncHandler(async (req, res, next) => {
   try {
     var uid = "";
@@ -62,7 +63,6 @@ const RegisterUser = asyncHandler(async (req, res, next) => {
       });
     }
   }
-
   // Assuming sendTokenResponse is here, do not send a response if headers have already been sent
   if (sendTokenResponse && !res.headersSent) {
     sendTokenResponse(newUser, 200, res); // Adjust this according to your logic

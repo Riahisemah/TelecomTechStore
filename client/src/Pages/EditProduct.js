@@ -45,7 +45,7 @@ const EditProduct = ({ match }) => {
   console.log(product);
 
   const catigoryList = useSelector((state) => state.catigoryList);
-  const { success: categorySuccess, catigorys, error: categoryFail, loading: categoryLoading } = catigoryList;
+  const { success: categorySuccess, catigorys } = catigoryList;
   console.log('catigory  ' + catigorys);
 
   const updateProductDetails = useSelector((state) => state.updateProductDetails);
@@ -120,7 +120,7 @@ const EditProduct = ({ match }) => {
               <div className="success-img">
                 <img src={confirmationImg} alt="confirmationImg" />
               </div>
-              <h3 className="font-weight-bold text">Product updated successfully</h3>
+              <h3 className="font-weight-bold text">Produit mise à jour avec succès</h3>
               <Button
                 type="submit"
                 variant="contained"
@@ -150,16 +150,16 @@ const EditProduct = ({ match }) => {
         />
       )}
       <Link to={routes.PRODUCTS} className="btn btn-light my-3">
-        Go Back
+        Retourner{' '}
       </Link>
       {loading ? (
-        <h4>Loading...</h4>
+        <h4>Chargemment...</h4>
       ) : error ? (
         <ErrorMessage header="Something went wrong" message={error} />
       ) : (
         <>
           <FormContainer>
-            <h1>Edit Product </h1>
+            <h1>Mise a jour Produit </h1>
             <Form onSubmit={submitHandler}>
               <TextField
                 variant="outlined"
@@ -168,7 +168,7 @@ const EditProduct = ({ match }) => {
                 required
                 fullWidth
                 id="name"
-                label="Name"
+                label="Nome"
                 name="name"
                 autoComplete="name"
                 autoFocus
@@ -183,7 +183,7 @@ const EditProduct = ({ match }) => {
                 required
                 fullWidth
                 id="brand"
-                label="Breed"
+                label="Marque"
                 name="brand"
                 autoComplete="brand"
                 autoFocus
@@ -198,7 +198,7 @@ const EditProduct = ({ match }) => {
                 required
                 fullWidth
                 id="price"
-                label="Price"
+                label="Prix"
                 name="price"
                 autoComplete="price"
                 autoFocus
@@ -212,7 +212,7 @@ const EditProduct = ({ match }) => {
                 required
                 fullWidth
                 id="countInStock"
-                label="CountInStock"
+                label="Quantite En Stock"
                 name="countInStock"
                 autoComplete="countInStock"
                 autoFocus
@@ -238,7 +238,7 @@ const EditProduct = ({ match }) => {
                 onChange={(e) => setDescription(e.target.value)}
               />
               <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
+                <InputLabel id="demo-simple-select-outlined-label">Catégorie</InputLabel>
                 <Select
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
@@ -247,7 +247,7 @@ const EditProduct = ({ match }) => {
                   value={category}
                 >
                   <MenuItem value="">
-                    <em>None</em>
+                    <em>Aucune</em>
                   </MenuItem>
                   {catigorys &&
                     catigorys.map((catigory) => (
@@ -258,11 +258,22 @@ const EditProduct = ({ match }) => {
                 </Select>
               </FormControl>
 
-              <Button type="submit" variant="contained" color="primary" fullWidth disabled={EditProductLoading}>
+              <Button
+                type="submit"
+                variant="contained"
+                style={{
+                  background: 'rgb(32,113,31)',
+                  // eslint-disable-next-line no-dupe-keys
+                  background:
+                    'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                }}
+                fullWidth
+                disabled={EditProductLoading}
+              >
                 {EditProductLoading ? (
                   <CircularProgress color="inherit" className={classes.prgressColor} />
                 ) : (
-                  <>Update</>
+                  <>Mise a jour</>
                 )}
               </Button>
             </Form>

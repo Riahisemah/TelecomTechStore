@@ -62,7 +62,7 @@ export const bodyForOrders = (orders) => {
           color: 'white',
         },
         {
-          text: 'USER',
+          text: 'UTILISATEUR',
           bold: true,
           fillColor: '#2B2B52',
           color: 'white',
@@ -74,19 +74,19 @@ export const bodyForOrders = (orders) => {
           color: 'white',
         },
         {
-          text: 'TOTAL PRICE',
+          text: 'PRIX TOTAL',
           bold: true,
           fillColor: '#2B2B52',
           color: 'white',
         },
         {
-          text: 'PAID',
+          text: 'PAYÉ',
           bold: true,
           fillColor: '#2B2B52',
           color: 'white',
         },
         {
-          text: 'DELIVERED',
+          text: 'LIVRÉ',
           bold: true,
           fillColor: '#2B2B52',
           color: 'white',
@@ -99,8 +99,8 @@ export const bodyForOrders = (orders) => {
         o.userId && o.userId.name,
         o.createdAt.substring(0, 10),
         o.totalPrice,
-        o.isPaid ? o.paidAt.substring(0, 10) : 'Not paid',
-        o.isDelivered ? o.deliveredAt.substring(0, 10) : 'Not paid',
+        o.isPaid ? o.paidAt.substring(0, 10) : 'Pas encore payé',
+        o.isDelivered ? o.deliveredAt.substring(0, 10) : 'Pas encore payé',
       ]),
     ],
   };
@@ -124,7 +124,7 @@ export const bodyForUsers = (users) => {
           color: 'white',
         },
         {
-          text: 'NAME',
+          text: 'NOM',
           bold: true,
           fillColor: '#2B2B52',
           color: 'white',
@@ -136,7 +136,7 @@ export const bodyForUsers = (users) => {
           color: 'white',
         },
         {
-          text: 'VERIFIED',
+          text: 'VÉRIFIÉ',
           bold: true,
           fillColor: '#2B2B52',
           color: 'white',

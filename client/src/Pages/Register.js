@@ -57,11 +57,15 @@ const Register = ({ location, history }) => {
 
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <h1>S'inscrire</h1>
       {error && <ErrorMessage header="Auth Error" message={error} reset={userConstants.USER_REGISTER_RESET} />}
       {verificationMessage !== '' && <ErrorMessage header="Auth Error" message={verificationMessage} />}
       {success && (
-        <SuccessMessage header="Register SuccessFully" message={message} reset={userConstants.USER_REGISTER_RESET} />
+        <SuccessMessage
+          header="Inscrivez-vous avec succès"
+          message={message}
+          reset={userConstants.USER_REGISTER_RESET}
+        />
       )}
       <Form onSubmit={handleSubmit}>
         <TextField
@@ -71,7 +75,7 @@ const Register = ({ location, history }) => {
           required
           fullWidth
           id="name"
-          label="User Name"
+          label="Nome"
           name="name"
           autoComplete="email"
           autoFocus
@@ -103,7 +107,7 @@ const Register = ({ location, history }) => {
           required
           fullWidth
           name="password"
-          label="Password"
+          label="Mote de Passe"
           id="password"
           value={password}
           autoComplete="current-password"
@@ -118,21 +122,33 @@ const Register = ({ location, history }) => {
           required
           fullWidth
           name="password"
-          label="Confirm Password"
+          label="Confirme le Mote de Passe"
           id="password"
           value={confirmPassword}
           autoComplete="current-password"
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
 
-        <Button type="submit" variant="contained" color="primary" fullWidth onClick={handleSubmit} disabled={loading}>
-          {loading ? <CircularProgress color="inherit" className={classes.progressColor} /> : <>Register</>}
+        <Button
+          type="submit"
+          variant="contained"
+          style={{
+            background: 'rgb(32,113,31)',
+            // eslint-disable-next-line no-dupe-keys
+            background:
+              'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+          }}
+          fullWidth
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? <CircularProgress color="inherit" className={classes.progressColor} /> : <>Registre</>}
         </Button>
       </Form>
 
       <Row className="py-3">
         <Col>
-          Have an Account? <Link to={redirectUserToLoginRoute}>Login</Link>
+          Avez-vous un compte ? <Link to={redirectUserToLoginRoute}> Se connecter</Link>
         </Col>
       </Row>
     </FormContainer>

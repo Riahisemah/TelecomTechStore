@@ -8,7 +8,6 @@ export const listCatigorys = (state = { catigorys: [] }, action) => {
         catigorys: [],
       };
     case catigoryConstants.CATIGORYLIST_FETCH_SUCCESS:
-      console.log(action.payload.result + '   catigory Reducers');
       return {
         catigorys: action.payload.results,
         count: action.payload.count,

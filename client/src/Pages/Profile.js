@@ -6,10 +6,8 @@ import ErrorMessage from '../Components/Message/errorMessage';
 //import { Button as MeterialButton } from "@material-ui/core/";
 import { authOrder } from '../Actions/orderAction';
 import { interpolate } from '../utils/string';
-import { createPdfData } from '../services/order';
 import * as routes from '../Constants/routes';
 import TableLoader from '../Components/Loader/TableLoader';
-import Print from '../Components/Print/Print';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -28,35 +26,17 @@ const Profile = () => {
     // eslint-disable-next-line
   }, [dispatch, userInfo]);
 
-  const printAs = (value) => {
-    const downloadAs = value;
-
-    switch (downloadAs) {
-      case 'pdf':
-        var docDefinition = createPdfData(userInfo, orders);
-
-        pdfMake.createPdf(docDefinition).download('user-order.pdf');
-
-        break;
-      case 'excel':
-        break;
-
-      default:
-        break;
-    }
-  };
-
   console.log(orders);
 
   return (
     <Row>
       <Col md={3}>
-        <h2>Profile</h2>
+        <h2>Profil</h2>
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
               <Row>
-                <Col>Name:</Col>
+                <Col>Nom:</Col>
                 <Col>
                   <strong>{userInfo.name}</strong>
                 </Col>
@@ -72,32 +52,19 @@ const Profile = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col>Account:</Col>
+                <Col>Compte:</Col>
                 <Col>
                   <strong>{userInfo.verify ? 'Verified' : 'Not Verified'}</strong>
                 </Col>
               </Row>
             </ListGroup.Item>
-            {/**   <ListGroup.Item>
-                <LinkContainer to="/updateUserDetails">
-                  <Button type="button" variant="contained" color="primary" fullWidth disabled={true}>
-                    Update
-                  </Button>
-                </LinkContainer>
-              </ListGroup.Item> 
-            */}
           </ListGroup>
         </Card>
       </Col>
       <Col md={9}>
         <div className="clearfix">
           <span className="float-left">
-            <h1>My Orders ({count})</h1>
-          </span>
-
-          <span className="float-right">
-            {' '}
-            <Print printAs={printAs} />
+            <h1>Mon Commandes ({count})</h1>
           </span>
         </div>
 
@@ -111,9 +78,9 @@ const Profile = () => {
               <tr>
                 <th>ID</th>
                 <th>DATE</th>
-                <th>TOTAL PRICE</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
+                <th>TOTAL PRIX</th>
+                <th>PAYÉ</th>
+                <th>LIVRÉ</th>
                 <th></th>
               </tr>
             </thead>
@@ -144,7 +111,7 @@ const Profile = () => {
                       })}
                     >
                       <Button className="btn-sm" variant="light">
-                        Details
+                        Détails
                       </Button>
                     </LinkContainer>
                   </td>

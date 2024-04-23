@@ -161,7 +161,7 @@ const ProductList = () => {
                         required
                         fullWidth
                         id="name"
-                        label="Name"
+                        label="Nom"
                         name="name"
                         autoComplete="name"
                         autoFocus
@@ -177,7 +177,7 @@ const ProductList = () => {
                         required
                         fullWidth
                         id="brand"
-                        label="Breed"
+                        label="Marque"
                         name="brand"
                         autoComplete="brand"
                         autoFocus
@@ -196,7 +196,7 @@ const ProductList = () => {
                         required
                         fullWidth
                         id="price"
-                        label="Price"
+                        label="Prix"
                         name="price"
                         autoComplete="price"
                         autoFocus
@@ -212,7 +212,7 @@ const ProductList = () => {
                         required
                         fullWidth
                         id="countInStock"
-                        label="CountInStock"
+                        label="Quantite en Stock"
                         name="countInStock"
                         autoComplete="countInStock"
                         autoFocus
@@ -239,7 +239,7 @@ const ProductList = () => {
                     </Col>
                     <Col xs={12} md={6}>
                       <FormControl variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
+                        <InputLabel id="demo-simple-select-outlined-label">Catégorie</InputLabel>
                         <Select
                           labelId="demo-simple-select-outlined-label"
                           id="demo-simple-select-outlined"
@@ -290,7 +290,7 @@ const ProductList = () => {
                   {createLoading ? <CircularProgress color="inherit" className={classes.prgressColor} /> : <>Submit</>}
                 </MaterialButton>{' '}
                 <MaterialButton variant="contained" color="primary" onClick={cancelCreateProduct}>
-                  Close
+                  Fermer
                 </MaterialButton>
               </Modal.Footer>
             </Form>
@@ -307,7 +307,7 @@ const ProductList = () => {
         return (
           <div className="custom-ui">
             <h1 className="font-weight-bold text-white">Are you sure?</h1>
-            <p>You want to delete this Pet?</p>
+            <p>Vous souhaitez supprimer cet Produit?</p>
             <MaterialButton
               variant="contained"
               color="primary"
@@ -316,10 +316,10 @@ const ProductList = () => {
                 onClose();
               }}
             >
-              Yes, Delete it !
+              oui,SUPPRIMER !
             </MaterialButton>
             <MaterialButton variant="contained" color="primary" onClick={onClose}>
-              No
+              Non
             </MaterialButton>
           </div>
         );
@@ -332,24 +332,33 @@ const ProductList = () => {
       {deleteSuccess && (
         <SuccessMessage
           header="Done"
-          message="Product Deleted Successfully"
+          message="Produit supprimé avec succès"
           reset={productConstants.DELETE_PRODUCT_RESET}
         />
       )}
       {deleteFail && (
         <ErrorMessage
-          header="Something went wrong"
+          header="Quelque chose s'est mal passé"
           message={deleteFail}
           reset={productConstants.DELETE_PRODUCT_RESET}
         />
       )}
       <Row>
         <Col>
-          <h1>Product({count})</h1>
+          <h1>Produit({count})</h1>
         </Col>
         <Col className="text-right">
-          <MaterialButton variant="contained" color="primary" onClick={() => setOpenForm(true)}>
-            <i className="fas fa-plus mr-2"></i> Add Product
+          <MaterialButton
+            variant="contained"
+            style={{
+              background: 'rgb(32,113,31)',
+              // eslint-disable-next-line no-dupe-keys
+              background:
+                'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+            }}
+            onClick={() => setOpenForm(true)}
+          >
+            <i className="fas fa-plus mr-2"></i> Ajouter Produit
           </MaterialButton>
         </Col>
       </Row>
@@ -363,11 +372,11 @@ const ProductList = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
-                <th>Action</th>
+                <th>NOME</th>
+                <th>PRIX</th>
+                <th>CATEGORIE</th>
+                <th>MARQUE</th>
+                <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
@@ -375,7 +384,7 @@ const ProductList = () => {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>${product.price}</td>
+                  <td>DT :{product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>

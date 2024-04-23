@@ -193,7 +193,16 @@ const CatigoryList = () => {
           <h1>Catigory({count})</h1>
         </Col>
         <Col className="text-right">
-          <MaterialButton variant="contained" color="primary" onClick={() => setOpenForm(true)}>
+          <MaterialButton
+            variant="contained"
+            style={{
+              background: 'rgb(32,113,31)',
+              // eslint-disable-next-line no-dupe-keys
+              background:
+                'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+            }}
+            onClick={() => setOpenForm(true)}
+          >
             <i className="fas fa-plus mr-2"></i> Add Catigory
           </MaterialButton>
         </Col>
@@ -208,7 +217,7 @@ const CatigoryList = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>NAME</th>
+                <th>NOM</th>
               </tr>
             </thead>
             <tbody>

@@ -20,12 +20,6 @@
 - PayPal / credit card integration
 - Database seeder (products, users, reviews, & orders)
 
-**New features (Added)**
-
-- Print User orders as pdf
-- Print UserList as pdf
-- Print OrderList as pdf
-
 **Admin features**
 
 - Product management
@@ -38,12 +32,12 @@
 
 ```
 #Start the server
-yarn run start:dev
+npm run start:dev
 
 #Start the client side app
 cd client
 
-yarn start
+npm start
 ```
 
 **5.** **🎉 Open your browser and go to `https://localhost:3000`**

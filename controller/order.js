@@ -57,7 +57,7 @@ const payment = asyncHandler(async (req, res, next) => {
     );
   order.isPaid = true;
   order.paidAt = Date.now();
-  if (req.body.status) {
+  if (req.body.status || true) {
     order.paymentResult = {
       id: req.body.id,
       status: req.body.status,

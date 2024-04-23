@@ -58,7 +58,7 @@ const ProductDetails = ({ match, history }) => {
         <ErrorMessage header="Opps!!!" message={createReviewError} reset={productConstants.CREATE_REVIEW_RESET} />
       )}
       <Link className="btn btn-light my-3" to={routes.HOME}>
-        Go Back
+        Retourner{' '}
       </Link>
       {loading ? (
         <SinglePageLoader />
@@ -81,7 +81,7 @@ const ProductDetails = ({ match, history }) => {
                     text={`${product.Reviews ? product.Reviews.length : 0} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: {product.price} DT</ListGroup.Item>
+                <ListGroup.Item>Prix: {product.price} DT</ListGroup.Item>
                 <ListGroup.Item>Description: {product.description}</ListGroup.Item>
               </ListGroup>
             </Col>
@@ -90,7 +90,7 @@ const ProductDetails = ({ match, history }) => {
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
-                      <Col>Price:</Col>
+                      <Col>Prix:</Col>
                       <Col>
                         <strong>{product.price + '  '} DT </strong>
                       </Col>
@@ -99,7 +99,7 @@ const ProductDetails = ({ match, history }) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col>Statut:</Col>
                       <Col>{product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}</Col>
                     </Row>
                   </ListGroup.Item>
@@ -107,7 +107,7 @@ const ProductDetails = ({ match, history }) => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>Quantité</Col>
                         <Col>
                           <FormControl className={classes.formControl}>
                             <Select
@@ -132,12 +132,17 @@ const ProductDetails = ({ match, history }) => {
                   <ListGroup.Item>
                     <Button
                       variant="contained"
-                      color="primary"
+                      style={{
+                        background: 'rgb(32,113,31)',
+                        // eslint-disable-next-line no-dupe-keys
+                        background:
+                          'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                      }}
                       onClick={addToCartHandler}
                       fullWidth
                       disabled={!product.countInStock}
                     >
-                      Add To Cart
+                      Ajouter au Panier{' '}
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>

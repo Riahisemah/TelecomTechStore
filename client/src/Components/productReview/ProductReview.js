@@ -83,15 +83,15 @@ const ProductReview = ({ productId }) => {
   };
 
   return loading ? (
-    <p>Loding....</p>
+    <p>Chargemment....</p>
   ) : error ? (
-    <ErrorMessage header="Something went wrong" message={error} />
+    <ErrorMessage header="Quelque chose s'est mal passé" message={error} />
   ) : (
     <>
       <Row>
         <Col md={6}>
-          <h2>Reviews({count})</h2>
-          {!productReviews.length && <h4>No Reviews</h4>}
+          <h2>Commentaires({count})</h2>
+          {!productReviews.length && <h4>Aucun Commentaires</h4>}
           <ListGroup variant="flush">
             {productReviews.map((review) => (
               <ListGroup.Item key={review._id}>
@@ -103,7 +103,7 @@ const ProductReview = ({ productId }) => {
               </ListGroup.Item>
             ))}
             <ListGroup.Item>
-              <h2>Write a Customer Review</h2>
+              <h2>Écrire un avis client</h2>
 
               {userInfo ? (
                 <Form onSubmit={handleCreateReview}>
@@ -111,11 +111,11 @@ const ProductReview = ({ productId }) => {
                     variant="outlined"
                     type="text"
                     margin="normal"
-                    placeholder="Write a title"
+                    placeholder="Écrivez un titre"
                     required
                     fullWidth
                     id="title"
-                    label="Write a title"
+                    label="Écrivez un titre"
                     name="title"
                     autoComplete="title"
                     value={title}
@@ -125,11 +125,11 @@ const ProductReview = ({ productId }) => {
                     variant="outlined"
                     type="text"
                     margin="normal"
-                    placeholder="Write a comment"
+                    placeholder="Ecrivez un Commentaires"
                     required
                     fullWidth
                     id="comment"
-                    label="Write a comment"
+                    label="Écrivez un Commentaires"
                     name="comment"
                     autoComplete="comment"
                     value={text}
@@ -137,7 +137,7 @@ const ProductReview = ({ productId }) => {
                   />
 
                   <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-outlined-label">Rating</InputLabel>
+                    <InputLabel id="demo-simple-select-outlined-label">Evaluation</InputLabel>
                     <Select
                       labelId="demo-simple-select-outlined-label"
                       id="demo-simple-select-outlined"
@@ -147,17 +147,27 @@ const ProductReview = ({ productId }) => {
                       value={rating}
                     >
                       <MenuItem value="">
-                        <em>None</em>
+                        <em>Aucun</em>
                       </MenuItem>
-                      <MenuItem value="1">1 - Poor</MenuItem>
-                      <MenuItem value="2">2 - Fair</MenuItem>
-                      <MenuItem value="3">3 - Good</MenuItem>
-                      <MenuItem value="4">4 - Very Good</MenuItem>
+                      <MenuItem value="1">1 - Pauvre</MenuItem>
+                      <MenuItem value="2">2 - Équitable</MenuItem>
+                      <MenuItem value="3">3 - Bien</MenuItem>
+                      <MenuItem value="4">4 - Tres Bien</MenuItem>
                       <MenuItem value="5">5 - Excellent</MenuItem>
                     </Select>
                   </FormControl>
                   <div className="my-3">
-                    <Button variant="contained" color="primary" type="submit" disabled={createReviewLoading}>
+                    <Button
+                      variant="contained"
+                      style={{
+                        background: 'rgb(32,113,31)',
+                        // eslint-disable-next-line no-dupe-keys
+                        background:
+                          'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                      }}
+                      type="submit"
+                      disabled={createReviewLoading}
+                    >
                       {createReviewLoading ? (
                         <CircularProgress color="inherit" className={classes.prgressColor} />
                       ) : (
@@ -168,7 +178,7 @@ const ProductReview = ({ productId }) => {
                 </Form>
               ) : (
                 <>
-                  Please <Link to={routes.LOGIN}>sign in</Link> to write a review{' '}
+                  S'il te plaît <Link to={routes.LOGIN}>Se connecter</Link> Pour Ecrivez un Commentaire{' '}
                 </>
               )}
             </ListGroup.Item>

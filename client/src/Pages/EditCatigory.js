@@ -72,7 +72,7 @@ const EditCatigory = ({ match }) => {
               <div className="success-img">
                 <img src={confirmationImg} alt="confirmationImg" />
               </div>
-              <h3 className="font-weight-bold text">Catigory updated successfully</h3>
+              <h3 className="font-weight-bold text">Catégorie mise à jour avec succès</h3>
               <Button
                 type="submit"
                 variant="contained"
@@ -102,16 +102,16 @@ const EditCatigory = ({ match }) => {
         />
       )}
       <Link to={routes.CATIGORYS} className="btn btn-light my-3">
-        Go Back
+        Retourner{' '}
       </Link>
       {loading ? (
-        <h4>Loading...</h4>
+        <h4>Chargemment...</h4>
       ) : error ? (
         <ErrorMessage header="Something went wrong" message={error} />
       ) : (
         <>
           <FormContainer>
-            <h1>Edit Catigory</h1>
+            <h1>Mise a jour Catégorie</h1>
             <Form onSubmit={submitHandler}>
               <TextField
                 variant="outlined"
@@ -127,11 +127,22 @@ const EditCatigory = ({ match }) => {
                 value={categoryName}
                 onChange={(e) => setName(e.target.value)}
               />
-              <Button type="submit" variant="contained" color="primary" fullWidth disabled={EditCatigoryLoading}>
+              <Button
+                style={{
+                  background: 'rgb(32,113,31)',
+                  // eslint-disable-next-line no-dupe-keys
+                  background:
+                    'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                }}
+                type="submit"
+                variant="contained"
+                fullWidth
+                disabled={EditCatigoryLoading}
+              >
                 {EditCatigoryLoading ? (
                   <CircularProgress color="inherit" className={classes.prgressColor} />
                 ) : (
-                  <>Update</>
+                  <>Mise a jour </>
                 )}
               </Button>
             </Form>

@@ -9,30 +9,30 @@ const CheckoutSteps = ({ step1, step2, step3 }) => {
       <Nav.Item>
         {step1 ? (
           <LinkContainer to={routes.SHIPPING}>
-            <Nav.Link>Shipping</Nav.Link>
+            <Nav.Link>Expédition</Nav.Link>
           </LinkContainer>
         ) : (
-          <Nav.Link disabled>Shipping</Nav.Link>
+          <Nav.Link disabled>Expédition</Nav.Link>
         )}
       </Nav.Item>
 
       <Nav.Item>
         {step2 ? (
           <LinkContainer to={routes.PAYMENT}>
-            <Nav.Link>Payment</Nav.Link>
+            <Nav.Link>Paiement</Nav.Link>
           </LinkContainer>
         ) : (
-          <Nav.Link disabled>Payment</Nav.Link>
+          <Nav.Link disabled>Paiement</Nav.Link>
         )}
       </Nav.Item>
 
       <Nav.Item>
         {step3 ? (
           <LinkContainer to={routes.PLACE_ORDER}>
-            <Nav.Link>Place Order</Nav.Link>
+            <Nav.Link> Passer la commande</Nav.Link>
           </LinkContainer>
         ) : (
-          <Nav.Link disabled>Place Order</Nav.Link>
+          <Nav.Link disabled>Passer la commande</Nav.Link>
         )}
       </Nav.Item>
     </Nav>

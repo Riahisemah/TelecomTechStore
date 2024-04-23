@@ -34,7 +34,7 @@ const ForgotPassword = () => {
       {error && <ErrorMessage header="Auth Error" message={error} reset={userConstants.FORGOT_PASSWORD_SEND_RSET} />}
       {success && <SuccessMessage header="Done" message={message} reset={userConstants.FORGOT_PASSWORD_SEND_RSET} />}
       <FormContainer>
-        <h1>Forgot Password</h1>
+        <h1>Mot de passe oublié</h1>
         <Form>
           <TextField
             variant="outlined"
@@ -50,7 +50,19 @@ const ForgotPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button type="submit" variant="contained" color="primary" fullWidth onClick={handleSubmit} disabled={loading}>
+          <Button
+            type="submit"
+            variant="contained"
+            style={{
+              background: 'rgb(32,113,31)',
+              // eslint-disable-next-line no-dupe-keys
+              background:
+                'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+            }}
+            fullWidth
+            onClick={handleSubmit}
+            disabled={loading}
+          >
             {loading ? <CircularProgress color="inherit" className={classes.prgressColor} /> : <>Send Request</>}
           </Button>
         </Form>

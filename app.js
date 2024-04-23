@@ -43,16 +43,15 @@ app.use(errorHandler); // Use a single error handling middleware consistently
 
 const PORT = process.env.PORT || 3000;
 
-const server = app.listen(
-  PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
-  )
-);
-
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {
   console.error(`Error: ${err.message}`.red.bold);
   // Close the server
   server.close(() => process.exit(1));
 });
+const server = app.listen(
+  PORT,
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+  )
+);

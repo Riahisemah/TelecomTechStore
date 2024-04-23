@@ -2,17 +2,17 @@ const nodemailer = require("nodemailer");
 
 const verifyEmail = async (options) => {
   let transporter = nodemailer.createTransport({
-    host: process.env.HOST,
-    port: process.env.PORT_BREVO,
+    host: "smtp-relay.brevo.com",
+    port: 587,
     secure: false, // Use TLS
     auth: {
-      user: process.env.FROM_EMAIL, // Your email
-      pass: process.env.EMAIL_PASSWORD, // Your email password or app-specific password
+      user: "riahisamh817@gmail.com", // Your email
+      pass: "nvaFt1y8wOYzZ4h9", // Your email password or app-specific password
     },
   });
 
   let message = {
-    from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
+    from: `TelecomTechStore <riahisamh817@gmail.com>`,
     to: options.email,
     subject: options.subject,
     html: `<div style="width:100%; height:100%;"><h1 style="font-weight:500">Hey,

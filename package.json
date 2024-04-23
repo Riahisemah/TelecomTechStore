@@ -6,10 +6,7 @@
   "author": "Riahi Semah",
   "license": "MIT",
   "scripts": {
-    "test": "jest --watchAll",
-    "start": "NODE_ENV=production node app.js",
-    "start:dev": "nodemon app",
-    "heroku-postbuild": "YARN_PRODUCTION=false cd client && yarn install"
+    "start:dev": "nodemon app"
   },
   "dependencies": {
     "@elasticemail/elasticemail-client": "^4.0.23",

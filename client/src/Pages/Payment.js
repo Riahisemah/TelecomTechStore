@@ -32,14 +32,14 @@ const PaymentMethod = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
-      <h1>Payment Method</h1>
+      <h1>Mode de Paiment </h1>
       <Form onSubmit={submitHandler}>
         <FormControl component="fieldset">
-          <FormLabel component="legend">Select Method</FormLabel>
+          <FormLabel component="legend">Sélectionnez la méthode</FormLabel>
           <Row>
             <Col md="10">
               <RadioGroup
-                aria-label="paymemtMethod"
+                aria-label="Mode de Paiment"
                 name="paymemtMethod"
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
@@ -50,8 +50,18 @@ const PaymentMethod = ({ history }) => {
           </Row>
         </FormControl>
 
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          Continue
+        <Button
+          type="submit"
+          variant="contained"
+          style={{
+            background: 'rgb(32,113,31)',
+            // eslint-disable-next-line no-dupe-keys
+            background:
+              'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+          }}
+          fullWidth
+        >
+          Continuer
         </Button>
       </Form>
     </FormContainer>

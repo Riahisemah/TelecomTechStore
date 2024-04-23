@@ -74,15 +74,27 @@ const ForgotPassword = ({ history }) => {
             required
             fullWidth
             id="password"
-            label="New Password"
+            label="nouveau Mot de Passe"
             name="password"
             autoComplete="password"
             autoFocus
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
           />
-          <Button type="submit" variant="contained" color="primary" fullWidth onClick={handleSubmit} disabled={loading}>
-            {loading ? <CircularProgress color="inherit" className={classes.prgressColor} /> : <>Reset</>}
+          <Button
+            type="submit"
+            variant="contained"
+            style={{
+              background: 'rgb(32,113,31)',
+              // eslint-disable-next-line no-dupe-keys
+              background:
+                'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+            }}
+            fullWidth
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress color="inherit" className={classes.prgressColor} /> : <>Réinitialiser</>}
           </Button>
         </Form>
       </FormContainer>

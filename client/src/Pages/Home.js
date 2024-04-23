@@ -94,16 +94,16 @@ const Home = () => {
           {searchProductKey ? (
             <>
               <Link to={routes.HOME} className="btn btn-light">
-                Go Back
+                Retourner{' '}
               </Link>
               <h1>
-                Search Product for {searchProductKey}({count})
+                Rechercher un produit pour {searchProductKey}({count})
               </h1>
             </>
           ) : (
             <div className="clearfix">
               <span className="float-left">
-                <h1>Latest product ({count})</h1>
+                <h1>Dernier produit ({count})</h1>
               </span>
               <span className="float-right">
                 {' '}
@@ -120,7 +120,7 @@ const Home = () => {
               </span>
             </div>
           )}
-          {!products.length && <h4>No Products</h4>}
+          {!products.length && <h4>Aucune Produit</h4>}
           <Row>
             {products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>

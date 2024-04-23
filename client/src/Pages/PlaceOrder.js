@@ -78,7 +78,7 @@ const PlaceOrder = ({ history }) => {
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Shipping</h2>
+              <h2>livraison</h2>
               <p>
                 <strong>Address:</strong>
                 {cart.shippingAddress.address}, {cart.shippingAddress.city} {cart.shippingAddress.postalCode},{' '}
@@ -87,15 +87,15 @@ const PlaceOrder = ({ history }) => {
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Payment Method</h2>
-              <strong>Method: </strong>
+              <h2>Mode de paiement</h2>
+              <strong>Mode: </strong>
               {cart.paymentMethod}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Order Items</h2>
+              <h2>Items Commandes</h2>
               {!cart.cartItems.length ? (
-                <>Your cart is empty</>
+                <>Votre panier est vide</>
               ) : (
                 <ListGroup variant="flush">
                   {cart.cartItems.map((item, index) => (
@@ -128,7 +128,7 @@ const PlaceOrder = ({ history }) => {
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2>Récapitulatif de la commande</h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
@@ -138,7 +138,7 @@ const PlaceOrder = ({ history }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
+                  <Col>livraison</Col>
                   <Col>${cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
@@ -158,7 +158,12 @@ const PlaceOrder = ({ history }) => {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  style={{
+                    background: 'rgb(32,113,31)',
+                    // eslint-disable-next-line no-dupe-keys
+                    background:
+                      'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                  }}
                   fullWidth
                   disabled={!cart.cartItems || loading}
                   onClick={placeOrderHandler}

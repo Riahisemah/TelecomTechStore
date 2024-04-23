@@ -5,21 +5,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import ErrorMessage from '../Components/Message/errorMessage';
 import { listOrders } from '../Actions/orderAction';
 import TableLoader from '../Components/Loader/TableLoader';
-import Print from '../Components/Print/Print';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import * as routes from '../Constants/routes';
-import { createPdfData } from '../services/order';
 import { interpolate } from '../utils/string';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const OrderList = () => {
   const orderList = useSelector((state) => state.orderList);
-  const userLogin = useSelector((state) => state.userLogin);
   const [initialLoading, setInitialLoading] = useState(true);
 
   const { orders, loading, error, count, success } = orderList;
-  const { userInfo } = userLogin;
   console.log(orders);
   const dispatch = useDispatch();
 
@@ -36,34 +32,11 @@ const OrderList = () => {
     // eslint-disable-next-line
   }, [dispatch, success]);
 
-  const printAs = (value) => {
-    const downloadAs = value;
-
-    switch (downloadAs) {
-      case 'pdf':
-        var docDefinition = createPdfData(userInfo, orders);
-
-        pdfMake.createPdf(docDefinition).download('orders-list.pdf');
-
-        break;
-      case 'excel':
-        break;
-
-      default:
-        break;
-    }
-  };
-
   return (
     <>
       <div className="clearfix">
         <span className="float-left">
-          <h1>Orders ({count})</h1>
-        </span>
-
-        <span className="float-right">
-          {' '}
-          <Print printAs={printAs} />
+          <h1>Commandes ({count})</h1>
         </span>
       </div>
 
@@ -76,23 +49,21 @@ const OrderList = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>USER</th>
+              <th>ID UTILISATEUR</th>
               <th>DATE</th>
               <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>delete</th>
-              <th></th>
+              <th>PAYÉ</th>
+              <th>LIVRÉ</th>
+              <th>SUPPRIMER</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
-                <td>{order.userId && order.userId.name}</td>
+                <td>{order.userId}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>${order.totalPrice}</td>
-                <td></td>
+                <td>DT : {order.totalPrice}</td>
                 <td>
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)
@@ -117,7 +88,7 @@ const OrderList = () => {
                     })}
                   >
                     <Button variant="light" className="btn-sm">
-                      Details
+                      Détails
                     </Button>
                   </LinkContainer>
                 </td>

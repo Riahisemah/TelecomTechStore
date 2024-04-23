@@ -10,9 +10,10 @@ const getCategories = asyncHandler(async (req, res, next) => {
       ? { name: { $regex: keyWord, $options: "i" } }
       : {};
     const searchProduct = await Category.find(searchItem);
+    console.log(searchProduct);
+
     res.status(200).send({
       status: "success",
-
       data: { results: searchProduct, count: searchProduct.length },
     });
   } else {

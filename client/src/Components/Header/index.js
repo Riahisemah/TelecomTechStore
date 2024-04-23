@@ -17,14 +17,25 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        style={{
+          background: 'rgb(32,113,31)',
+          // eslint-disable-next-line no-dupe-keys
+          background:
+            'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+        }}
+        variant="dark"
+        expand="lg"
+        collapseOnSelect
+      >
         <Container>
-          <Image
-            src={logoImage}
-            alt="Logo"
-            fluid
+          <LinkContainer
+            to={routes.HOME}
             style={{ marginLeft: '-50px', marginRight: '50px ', width: '100px', height: '50px' }}
-          />
+          >
+            <Image src={logoImage} alt="Logo" fluid />
+          </LinkContainer>
+
           <LinkContainer to={routes.HOME}>
             <Navbar.Brand>TelecomTechStore</Navbar.Brand>
           </LinkContainer>
@@ -44,32 +55,32 @@ const Header = () => {
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to={routes.PROFILE}>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item>Profil</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to={routes.LOGOUT}>
-                    <NavDropdown.Item>Logout</NavDropdown.Item>
+                    <NavDropdown.Item>Se déconnecter</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               ) : (
                 <LinkContainer to={routes.LOGIN}>
                   <Nav.Link>
-                    <i className="fas fa-user"></i> Sign In
+                    <i className="fas fa-user"></i>Se connecter
                   </Nav.Link>
                 </LinkContainer>
               )}
               {userInfo && userInfo.role === 'admin' && (
-                <NavDropdown title="Admin" id="adminMenu">
+                <NavDropdown title="Administrateur" id="adminMenu">
                   <LinkContainer to={routes.USERS}>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
+                    <NavDropdown.Item>Utilisateurs</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to={routes.PRODUCTS}>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
+                    <NavDropdown.Item>Produits</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to={routes.CATIGORYS}>
-                    <NavDropdown.Item>Catigories</NavDropdown.Item>
+                    <NavDropdown.Item>Catégories</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to={routes.ORDERS}>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                    <NavDropdown.Item>Commandes</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}

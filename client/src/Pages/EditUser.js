@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 const UpdateUser = ({ match }) => {
   const userId = match.params.userId;
   const userUpdateDetails = useSelector((state) => state.userUpdateDetails);
-  const { loading: updateLoading, error: updateError, success: updateSuccess } = userUpdateDetails;
+  const { loading: updateLoading, eror: updateError, success: updateSuccess } = userUpdateDetails;
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, user, error, success } = userDetails;
@@ -89,7 +89,7 @@ const UpdateUser = ({ match }) => {
               <div className="success-img">
                 <img src={confirmationImg} alt="confirmationImg" />
               </div>
-              <h3 className="font-weight-bold text">User updated successfully</h3>
+              <h3 className="font-weight-bold text">Utilisateur mise à jour avec succès</h3>
               <Button
                 type="submit"
                 variant="contained"
@@ -116,16 +116,16 @@ const UpdateUser = ({ match }) => {
         <ErrorMessage header="Something went wrong" message={updateError} reset={userConstants.USER_EDIT_RESET} />
       )}
       <Link to={routes.USERS} className="btn btn-light my-3">
-        Go Back
+        Retourner{' '}
       </Link>
       {loading ? (
-        <h4>Loading...</h4>
+        <h4>Chargemment...</h4>
       ) : error ? (
         <ErrorMessage header="Something went wrong" message={error} />
       ) : (
         <>
           <FormContainer>
-            <h1>Edit User</h1>
+            <h1>Mise a jour Utilisateur</h1>
             <Form onSubmit={submitHandler}>
               <TextField
                 variant="outlined"
@@ -134,7 +134,7 @@ const UpdateUser = ({ match }) => {
                 required
                 fullWidth
                 id="name"
-                label="Name"
+                label="Nome"
                 name="name"
                 autoComplete="name"
                 autoFocus
@@ -151,7 +151,7 @@ const UpdateUser = ({ match }) => {
                 id="email"
                 label="Email"
                 name="email"
-                autoComplete="brand"
+                autoComplete="Email"
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -169,15 +169,20 @@ const UpdateUser = ({ match }) => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value="user">User</MenuItem>
-                  <MenuItem value="admin">Admin</MenuItem>
+                  <MenuItem value="user">Utilisateur</MenuItem>
+                  <MenuItem value="admin">Administrateur</MenuItem>
                 </Select>
               </FormControl>
 
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                style={{
+                  background: 'rgb(32,113,31)',
+                  // eslint-disable-next-line no-dupe-keys
+                  background:
+                    'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                }}
                 fullWidth
                 disabled={updateLoading}
                 className={classes.prgressColor}

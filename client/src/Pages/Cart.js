@@ -40,10 +40,10 @@ const Cart = ({ history }) => {
   return (
     <Row>
       <Col md={8}>
-        <h1>Shopping Cart</h1>
+        <h1>Panier</h1>
         {!cartItems.length ? (
           <>
-            Your cart is empty <Link to={routes.HOME}>Go Back</Link>
+            Votre panier est vide <Link to={routes.HOME}>Go Back</Link>
           </>
         ) : (
           <ListGroup variant="flush">
@@ -62,7 +62,7 @@ const Cart = ({ history }) => {
                       {item.productName}
                     </Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>DT : {item.price}</Col>
                   <Col md={2}>
                     <FormControl className={classes.formControl}>
                       <Select
@@ -95,19 +95,24 @@ const Cart = ({ history }) => {
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2> DT : <span> </span>
+              <h2>Total ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2> DT : <span> </span>
               {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
               <Button
                 type="button"
                 variant="contained"
-                color="primary"
+                style={{
+                  background: 'rgb(32,113,31)',
+                  // eslint-disable-next-line no-dupe-keys
+                  background:
+                    'linear-gradient(90deg, rgba(32,113,31,1) 0%, rgba(214,255,0,1) 34%, rgba(255,35,235,1) 69%, rgba(12,15,145,1) 100%)',
+                }}
                 onClick={handleCheckout}
                 fullWidth
                 disabled={!cartItems.length}
               >
-                Proceed To Checkout
+                Passer à la caisse{' '}
               </Button>
             </ListGroup.Item>
           </ListGroup>
